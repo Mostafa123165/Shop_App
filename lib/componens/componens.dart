@@ -17,8 +17,6 @@ Widget defaultTextFormField ({
   FormFieldValidator? validator ,
   ValueChanged<String>? onFieldSubmitted ,
   TextInputType keyboardType = TextInputType.emailAddress ,
-  bool? isLightMode ,
-  Color? color,
   context,
 })
 => TextFormField(
@@ -27,9 +25,6 @@ Widget defaultTextFormField ({
       obscureText:isPassword ,
       validator: validator,
       onFieldSubmitted: onFieldSubmitted,
-      style: TextStyle(
-          color: color,
-      ),
       decoration: InputDecoration (
         label:Text(
             lapel,

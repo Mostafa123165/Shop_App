@@ -130,7 +130,7 @@ class FavouriteScreen extends StatelessWidget {
                         IconButton(
                           padding: EdgeInsetsDirectional.zero,
                           onPressed: () {
-                            print('hell');
+                            //print('hell');
                             HomeCubit.get(context).changeFavorites(HomeCubit
                                 .get(context)
                                 .modeGetDateFavourite!
