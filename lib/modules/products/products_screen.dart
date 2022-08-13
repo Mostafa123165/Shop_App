@@ -32,11 +32,7 @@ class ProductsScreen extends StatelessWidget {
               .get(context)
               .categoriesModel != null,
           builder: (context) =>
-              productsBuilder(HomeCubit
-                  .get(context)
-                  .shopModel, HomeCubit
-                  .get(context)
-                  .categoriesModel, context),
+              productsBuilder(HomeCubit.get(context).shopModel, HomeCubit.get(context).categoriesModel, context),
           fallback: (context) => const Center(child: CircularProgressIndicator()),
         );
       },
@@ -219,11 +215,7 @@ class ProductsScreen extends StatelessWidget {
                                     },
                                     icon: CircleAvatar(
                                       radius: 15.0,
-                                      backgroundColor: HomeCubit
-                                          .get(context)
-                                          .favourite[shopModel.data!
-                                          .products[index].id] == false ? Colors
-                                          .grey[400] : defaultColor,
+                                      backgroundColor: HomeCubit.get(context).favourite[shopModel.data!.products[index].id] == false ? Colors.grey[400] : defaultColor,
                                       child: Icon(
                                         Icons.favorite_border,
                                         size: 18.0,

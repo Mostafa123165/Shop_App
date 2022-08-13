@@ -22,9 +22,7 @@ void main() async {
   Widget widget;
   bool? onBoarding = CashHelper.getDate(key: 'OnBoardingScreen');
   token = CashHelper.getDate(key: 'token');
-  /*if(token == null) {
-    token = 'eSEYSfNtklBFL7ULeVljUMZPgtqgOwggNCvEkJv6gW6yLfleVe8b57YnA1AcSQQLijnZ8T';
-  }*/
+  print(token);
   print(token);
   bool? isLightMode = CashHelper.getDate(key: 'isLightMode');
   print('................. $isLightMode');
@@ -61,7 +59,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (BuildContext context) => HomeCubit()
             ..getDataHome()
-            ..getDataCategories()
+            ..getDataCategories()..getDateFavourite()
             ..changeAppMode(fromShared: modeApp),
         ),
         BlocProvider(
@@ -75,6 +73,11 @@ class MyApp extends StatelessWidget {
             print('zzzzzzzzzzzzzzz $modeApp');
             return MaterialApp(
               theme: ThemeData(
+                textTheme: const TextTheme(
+                    bodyText2: TextStyle(
+                      color: Colors.black,
+                    )
+                ),
                 scaffoldBackgroundColor: Colors.white,
                 appBarTheme: const AppBarTheme(
                     backwardsCompatibility: false,
@@ -104,6 +107,15 @@ class MyApp extends StatelessWidget {
                 //primaryColor: Colors.white24
               ),
               darkTheme: ThemeData(
+
+                textTheme:  TextTheme(
+                    subtitle1: TextStyle(
+                      color: HexColor('FFFFFF'),
+                    ),
+                    bodyText2: TextStyle(
+                      color: HexColor('FFFFFF'),
+                    ),
+                ),
                 scaffoldBackgroundColor: HexColor('15202B'),
                 appBarTheme: AppBarTheme(
                   color: HexColor('15202B'),
@@ -131,11 +143,6 @@ class MyApp extends StatelessWidget {
                 backgroundColor: Colors.white24,
                 iconTheme: const IconThemeData(
                   color: defaultColor,
-                ),
-                textTheme: TextTheme(
-                  bodyText2: TextStyle(
-                    color: HexColor('FFFFFF'),
-                  ),
                 ),
                 inputDecorationTheme: InputDecorationTheme(
                   labelStyle: TextStyle(

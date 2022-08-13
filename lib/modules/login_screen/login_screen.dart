@@ -2,15 +2,13 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shopapp/componens/componens.dart';
 import 'package:shopapp/lay_out/shop_lay_out/Shop_Lay_Out.dart';
+import 'package:shopapp/lay_out/shop_lay_out/cubit/home_cubit.dart';
 import 'package:shopapp/modules/login_screen/bloc/bloc_login_screen.dart';
 import 'package:shopapp/modules/login_screen/bloc/state_login_screen.dart';
 import 'package:shopapp/modules/restiger_screen/restiger_screen.dart';
 import 'package:shopapp/network/cash_helper.dart';
-import 'package:shopapp/network/dio_helper.dart';
-import 'package:shopapp/ok.dart';
 import 'package:shopapp/style/colors/color.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -122,6 +120,7 @@ class LoginScreen extends StatelessWidget {
                             builder: (context) => defaultMatrialButton(
                                 function: (){
                                   if(formKey.currentState!.validate()) {
+                                    HomeCubit.get(context).getDateFavourite() ;
                                     BlocLoginScreen.get(context).userLogin(
                                      email:controlerEmailAddress.text
                                     ,password: controlerPassword.text,

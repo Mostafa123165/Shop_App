@@ -26,7 +26,7 @@ ModelDataProducts.fromJson(Map<String,dynamic>json){
 }
 class ModelGetDataProducts{
 
-  int? id ;
+  var id ;
   dynamic price ;
   dynamic oldPrice ;
   int? discount ;

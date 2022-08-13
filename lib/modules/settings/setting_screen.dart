@@ -22,9 +22,6 @@ class SettingsScreen extends StatelessWidget {
 
         listener:(context , state){} ,
         builder:(context , state){
-
-
-
           var model = HomeCubit.get(context).dateProfile ;
           /*nameControler.text  =  model!.data!.name! ;
           emailControler.text = model.data!.email!;
@@ -43,8 +40,6 @@ class SettingsScreen extends StatelessWidget {
                     lapel: 'name',
                     controler:HomeCubit.get(context).nameControler,
                     icon:Icon(Icons.person),
-                    isLightMode:HomeCubit.get(context).isLightMode!,
-                      color: HomeCubit.get(context).isLightMode!  ? Colors.black: Colors.red
                   ),
                   const SizedBox(
                     height: 10.0,
@@ -53,8 +48,6 @@ class SettingsScreen extends StatelessWidget {
                     lapel: 'Email Address',
                     controler:HomeCubit.get(context).emailControler,
                     icon:Icon(Icons.email),
-                    isLightMode:HomeCubit.get(context).isLightMode!,
-                    color: HomeCubit.get(context).isLightMode!  ? Colors.black: Colors.red
                   ),
                   const SizedBox(
                     height: 10.0,
@@ -63,8 +56,6 @@ class SettingsScreen extends StatelessWidget {
                     lapel: 'Phone',
                     controler:HomeCubit.get(context).phoneControler,
                     icon:Icon(Icons.phone),
-                     isLightMode:HomeCubit.get(context).isLightMode!,
-                      color: HomeCubit.get(context).isLightMode!  ? Colors.black: Colors.red
                   ),
                   const SizedBox(
                     height: 15.0,
@@ -72,8 +63,9 @@ class SettingsScreen extends StatelessWidget {
                   defaultMatrialButton(
                       function: (){
                         CashHelper.removeDate(key:'token',).then((value) {
-                          CashHelper.clearAllData();
+
                           if(value){
+                            print("------------------");
                             Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
                               builder: (context) => LoginScreen(),
                             ), (route) => false);

@@ -79,8 +79,11 @@ class HomeCubit extends Cubit<HomeMainState> {
   }
   ChangeModelFavourite? modelFavourite ;
   void changeFavorites (int? idProducts , int index){
-    favourite[idProducts!] =!(favourite[idProducts]!) ;
-    shopModel!.data!.products[index].inFavorites = shopModel!.data!.products[index].inFavorites == false;
+
+    print('aaaaaaaaa${favourite.length}');
+    print('aaaaaaaaa${favourite[idProducts!]}');
+    favourite[idProducts] =!(favourite[idProducts]!) ;
+   // shopModel!.data!.products[index].inFavorites = shopModel!.data!.products[index].inFavorites == false;
     emit(ChangeFavoritesState());
     DioHelper.posDate(
         url: 'favorites',
@@ -115,9 +118,15 @@ class HomeCubit extends Cubit<HomeMainState> {
         token: token,
     ).then((value) {
       modeGetDateFavourite =  ModleGetDateFavourite.fromJson(value.data!) ;
+      modeGetDateFavourite!.data!.dateProducts.forEach((element) {
+        favourite.addAll({
+          element.products!.id : true ,
+        });
+      });
       //print(value.data);
       emit(GetDataFavouriteSuccessState()) ;
     }).catchError((error){
+
       print(error.toString());
       emit(GetDataFavouriteErrorState()) ;
     });
